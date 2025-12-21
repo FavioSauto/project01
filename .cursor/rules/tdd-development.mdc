@@ -1,0 +1,96 @@
+---
+alwaysApply: true
+---
+<TDD_WorkflowRule>
+  <Metadata>
+    <RuleName>Strict Test-Driven Development (TDD) Workflow</RuleName>
+    <Objective>Enforce a rigorous TDD cycle to ensure new code is well-tested, robust, secure, and adheres to specifications from the outset.</Objective>
+    <AppliesTo>All tasks involving the creation or modification of new features, functionalities, or significant code blocks.</AppliesTo>
+  </Metadata>
+
+  <CoreDirective>
+    For any task involving the creation or modification of code, you **must strictly adhere**
+    to a Test-Driven Development (TDD) workflow. This means **tests are always written first**,
+    followed by the minimum necessary code to make those tests pass.
+  </CoreDirective>
+
+  <TDD_Steps>
+    <Step order="1" name="Write Failing Tests (Red Phase)">
+      <Mandate>
+        Before writing any feature code, you **must first create a comprehensive suite of tests**
+        that cover all specified requirements for the new feature or modification.
+        These tests **must initially fail**, clearly demonstrating that the functionality
+        does not yet exist or is incorrect.
+      </Mandate>
+      <TestScenarioCategories>
+        <Category name="Success Cases">
+          <Description>
+            Write tests for all expected valid inputs and the corresponding desired, correct outputs.
+            Cover various permutations of successful operations.
+          </Description>
+        </Category>
+        <Category name="Error Cases">
+          <Description>
+            Develop tests for all anticipated error conditions, including:
+            <SubCategory>Invalid Inputs: Test with malformed, missing, or out-of-range data. (Refer to `ZodSchemaRules` for expected validation behaviors).</SubCategory>
+            <SubCategory>Edge Cases: Test boundary conditions, null/undefined values, and scenarios that might lead to unexpected behavior.</SubCategory>
+            <SubCategory>System Failures: Simulate failures from dependencies (e.g., database connection errors, external API timeouts or bad responses) and verify graceful error handling. (Refer to `ServerLogicRules/ErrorHandlingDirective` for expected error propagation and mapping).</SubCategory>
+          </Description>
+        </Category>
+        <Category name="Security Cases">
+          <Description>
+            Crucially, write tests to proactively detect and prevent common security vulnerabilities relevant to the feature:
+            <SubCategory>Input Sanitization: Verify that user-provided inputs are properly sanitized and cannot lead to XSS, code injection, or unexpected behavior. (Refer to `ActionsFileRules/InputSanitization`).</SubCategory>
+            <SubCategory>Authorization/Access Control: For operations requiring permissions, test attempts to access or modify data without proper authorization. (e.g., non-admin user trying to perform admin action).</SubCategory>
+            <SubCategory>Data Tampering: Test attempts to manipulate data in ways not intended by the application logic.</SubCategory>
+            <SubCategory>SQL Injection (Implicit): While Drizzle prevents direct injection, tests should ensure malformed inputs don't lead to unexpected query behavior or crashes. (Refer to `DrizzleSQLORMBestPractices/ParameterizedQueries`).</SubCategory>
+          </Description>
+        </Category>
+      </TestScenarioCategories>
+      <Tooling>
+        Utilize Jest and React Testing Library (for UI components) as the primary testing frameworks,
+        adhering to best practices for mocking and assertion.
+      </Tooling>
+    </Step>
+
+    <Step order="2" name="Write Production Code (Green Phase)">
+      <Mandate>
+        **Only after the tests are written and verified to fail** (the "Red" phase),
+        proceed to write the minimal amount of production code necessary to implement
+        the requested feature. The **sole objective** in this phase is to make all the
+        previously written tests pass.
+      </Mandate>
+      <Compliance>
+        The production code must simultaneously adhere to all other established project rules
+        (e.g., `ProjectStructureRules`, `CodeStyleAndStructure`, `NamingConventions`,
+        `PerformanceOptimization`, `DrizzleSchemaDesignRule`, `ServerLogicRules`, `ZodSchemaRules`).
+      </Compliance>
+    </Step>
+
+    <Step order="3" name="Run Tests and Verify Pass">
+      <Mandate>
+        Execute all tests. The task is **not complete** until all tests, including
+        the newly written ones, **pass successfully**. If any test fails, return to
+        Step 2 to modify the production code.
+      </Mandate>
+    </Step>
+
+    <Step order="4" name="Refactor (Implicit)">
+      <Mandate>
+        While not an explicit separate step in this rule, once all tests pass, the LLM
+        should implicitly engage in refactoring to improve the code's design, readability,
+        and adherence to broader best practices without altering its external behavior.
+        This includes applying rules like `CodeStyleAndStructure`, `PerformanceOptimization`,
+        `DrizzleSQLORMBestPractices`, etc., to the passing code.
+        **No new functionality should be added during refactoring without first writing a test for it.**
+      </Mandate>
+    </Step>
+  </TDD_Steps>
+
+  <LLM_BehavioralMandate>
+    <Directive>
+      When presenting a solution, first provide the tests, explaining their scope,
+      then present the production code, confirming that it makes the tests pass.
+    </Directive>
+  </LLM_BehavioralMandate>
+</TDD_WorkflowRule>
