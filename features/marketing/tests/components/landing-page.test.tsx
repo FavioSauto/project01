@@ -34,17 +34,17 @@ describe('LandingPage', function describeLandingPage() {
   it('renders key sections', function itRendersKeySections() {
     render(<LandingPage isAuthenticated={false} />);
 
-    expect(screen.getByRole('heading', { name: /features/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /how it works/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /testimonials/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /pricing/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /faq/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Your Complete Yoga Companion/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /How It Works/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /What Our Community Says/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Choose Your Path/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Frequently Asked Questions/i })).toBeInTheDocument();
   });
 
   it('routes the primary CTA to sign up when signed out', function itRoutesPrimaryCtaToSignUpWhenSignedOut() {
     render(<LandingPage isAuthenticated={false} />);
 
-    expect(getLinkHrefsByName(/start tracking/i)).toContain('/sign-up');
+    expect(getLinkHrefsByName(/Start Your Journey Free/i)).toContain('/sign-up');
   });
 
   it('routes the primary CTA to dashboard when signed in', function itRoutesPrimaryCtaToDashboardWhenSignedIn() {
@@ -53,6 +53,8 @@ describe('LandingPage', function describeLandingPage() {
     expect(getLinkHrefsByName(/go to dashboard/i)).toContain('/dashboard');
   });
 });
+
+
 
 
 

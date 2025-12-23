@@ -47,8 +47,8 @@ export function HowItWorksSection() {
                 key={step.number}
                 className="group relative"
               >
-                {/* Connector line (hidden on last item and mobile) */}
-                {index < STEPS.length - 1 && (
+                {/* Connector line (hidden on mobile) */}
+                {index < STEPS.length && (
                   <div className="absolute left-1/2 top-12 hidden h-px w-full -translate-x-1/2 lg:block">
                     <div className="h-full w-full bg-gradient-to-r from-border via-primary/30 to-border" />
                   </div>
