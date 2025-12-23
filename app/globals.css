@@ -1,116 +1,118 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* @custom-variant dark (&:is(.dark *)); */
+/* Feminine Yoga Landing Page Theme */
 
 :root {
-  /* Core Neutrals */
-  --background: oklch(98% 0.01 250); /* A very light blue-gray */
-  --foreground: oklch(15% 0.01 250); /* A dark blue-gray */
-  --card: oklch(100% 0 0); /* Pure white */
-  --card-foreground: oklch(10% 0 0); /* Near black */
+  /* Core Neutrals - Warm Cream Base */
+  --background: oklch(97% 0.01 75);
+  --foreground: oklch(25% 0.03 330);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(20% 0.02 330);
   --popover: oklch(100% 0 0);
-  --popover-foreground: oklch(10% 0 0);
+  --popover-foreground: oklch(20% 0.02 330);
 
-  /* Brand Colors */
-  --primary: oklch(55% 0.15 255); /* Sophisticated medium blue */
-  --primary-foreground: oklch(98% 0 0); /* Light text on primary */
-  --secondary: oklch(90% 0.05 200); /* Very light cool gray/teal */
-  --secondary-foreground: oklch(25% 0.05 200); /* Dark text on secondary */
-  --accent: oklch(85% 0.08 180); /* Subtle light teal/cyan for highlights */
-  --accent-foreground: oklch(20% 0.08 180); /* Dark text on accent */
+  /* Brand Colors - Dusty Rose, Sage, Lavender */
+  --primary: oklch(65% 0.12 10);
+  --primary-foreground: oklch(98% 0.01 10);
+  --secondary: oklch(88% 0.05 145);
+  --secondary-foreground: oklch(30% 0.04 145);
+  --accent: oklch(85% 0.08 290);
+  --accent-foreground: oklch(25% 0.06 290);
 
   /* Functional Colors */
-  --muted: oklch(90% 0.01 250); /* Slightly darker background for subtle elements */
-  --muted-foreground: oklch(50% 0.01 250); /* Medium gray for muted text */
-  --destructive: oklch(60% 0.25 20); /* Standard red for errors */
-  --border: oklch(90% 0.01 250); /* Light blue-gray border */
-  --input: oklch(92% 0.01 250); /* Slightly darker input background */
-  --ring: oklch(65% 0.15 255); /* Lighter primary for focus rings */
+  --muted: oklch(94% 0.02 10);
+  --muted-foreground: oklch(45% 0.03 330);
+  --destructive: oklch(55% 0.22 25);
+  --border: oklch(90% 0.02 75);
+  --input: oklch(95% 0.01 75);
+  --ring: oklch(65% 0.12 10);
 
-  /* Chart Colors (distinct but harmonious) */
-  --chart-1: oklch(65% 0.18 200); /* Cyan-blue */
-  --chart-2: oklch(65% 0.18 120); /* Green */
-  --chart-3: oklch(65% 0.18 300); /* Purple */
-  --chart-4: oklch(65% 0.18 60);  /* Yellow-orange */
-  --chart-5: oklch(65% 0.18 0);   /* Red-pink */
+  /* Chart Colors - Harmonious feminine palette */
+  --chart-1: oklch(65% 0.12 10);
+  --chart-2: oklch(70% 0.08 145);
+  --chart-3: oklch(70% 0.10 290);
+  --chart-4: oklch(75% 0.10 45);
+  --chart-5: oklch(60% 0.15 350);
 
-  /* Sidebar Specific (aligned with main theme) */
-  --sidebar: oklch(98% 0.01 250);
-  --sidebar-foreground: oklch(15% 0.01 250);
-  --sidebar-primary: oklch(55% 0.15 255);
-  --sidebar-primary-foreground: oklch(98% 0 0);
-  --sidebar-accent: oklch(85% 0.08 180);
-  --sidebar-accent-foreground: oklch(20% 0.08 180);
-  --sidebar-border: oklch(90% 0.01 250);
-  --sidebar-ring: oklch(65% 0.15 255);
+  /* Sidebar - Aligned with main theme */
+  --sidebar: oklch(96% 0.01 75);
+  --sidebar-foreground: oklch(25% 0.03 330);
+  --sidebar-primary: oklch(65% 0.12 10);
+  --sidebar-primary-foreground: oklch(98% 0.01 10);
+  --sidebar-accent: oklch(90% 0.05 290);
+  --sidebar-accent-foreground: oklch(25% 0.06 290);
+  --sidebar-border: oklch(90% 0.02 75);
+  --sidebar-ring: oklch(65% 0.12 10);
 
-  /* Fonts, Radius, and Shadows remain as per your example */
-  --font-sans: 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-serif: "Geist", "Geist Fallback", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --radius: 0.625rem;
-  --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
-  --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
-  --shadow: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-md: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 2px 4px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 4px 6px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 8px 10px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
+  /* Typography */
+  --font-sans: 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', ui-serif, serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  /* Radius and Shadows */
+  --radius: 0.75rem;
+  --shadow-2xs: 0 1px 2px 0 oklch(0 0 0 / 0.03);
+  --shadow-xs: 0 1px 3px 0 oklch(0 0 0 / 0.04);
+  --shadow-sm: 0 2px 4px -1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.04);
+  --shadow: 0 4px 6px -1px oklch(0 0 0 / 0.08), 0 2px 4px -2px oklch(0 0 0 / 0.04);
+  --shadow-md: 0 6px 10px -2px oklch(0 0 0 / 0.08), 0 3px 6px -3px oklch(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.08), 0 4px 6px -4px oklch(0 0 0 / 0.04);
+  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.08), 0 8px 10px -6px oklch(0 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px -12px oklch(0 0 0 / 0.2);
 }
 
 .dark {
-  /* Core Neutrals */
-  --background: oklch(15% 0.01 250); /* Dark blue-gray */
-  --foreground: oklch(98% 0.01 250); /* Light blue-gray */
-  --card: oklch(20% 0.01 250); /* Slightly lighter dark gray */
-  --card-foreground: oklch(95% 0 0);
-  --popover: oklch(20% 0.01 250);
-  --popover-foreground: oklch(95% 0 0);
+  /* Core Neutrals - Deep Mauve Base */
+  --background: oklch(18% 0.02 330);
+  --foreground: oklch(95% 0.01 75);
+  --card: oklch(22% 0.02 330);
+  --card-foreground: oklch(92% 0.01 75);
+  --popover: oklch(22% 0.02 330);
+  --popover-foreground: oklch(92% 0.01 75);
 
-  /* Brand Colors */
-  --primary: oklch(65% 0.15 255); /* Lighter blue for dark mode primary */
-  --primary-foreground: oklch(15% 0 0); /* Dark text on primary */
-  --secondary: oklch(25% 0.05 200); /* Darker, desaturated cool gray/teal */
-  --secondary-foreground: oklch(90% 0.05 200); /* Light text on secondary */
-  --accent: oklch(40% 0.08 180); /* Darker teal/cyan for highlights */
-  --accent-foreground: oklch(90% 0.08 180); /* Light text on accent */
+  /* Brand Colors - Lighter versions for dark mode */
+  --primary: oklch(75% 0.12 10);
+  --primary-foreground: oklch(18% 0.02 10);
+  --secondary: oklch(35% 0.04 145);
+  --secondary-foreground: oklch(90% 0.03 145);
+  --accent: oklch(45% 0.08 290);
+  --accent-foreground: oklch(92% 0.04 290);
 
   /* Functional Colors */
-  --muted: oklch(25% 0.01 250);
-  --muted-foreground: oklch(70% 0.01 250);
-  --destructive: oklch(70% 0.25 20); /* Lighter red for errors */
-  --border: oklch(25% 0.01 250); /* Dark blue-gray border */
-  --input: oklch(20% 0.01 250); /* Darker input background */
-  --ring: oklch(50% 0.15 255); /* Darker primary for focus rings */
+  --muted: oklch(25% 0.02 330);
+  --muted-foreground: oklch(70% 0.02 75);
+  --destructive: oklch(65% 0.20 25);
+  --border: oklch(28% 0.02 330);
+  --input: oklch(22% 0.02 330);
+  --ring: oklch(75% 0.12 10);
 
-  /* Chart Colors (adjusted lightness for dark background) */
-  --chart-1: oklch(75% 0.18 200);
-  --chart-2: oklch(75% 0.18 120);
-  --chart-3: oklch(75% 0.18 300);
-  --chart-4: oklch(75% 0.18 60);
-  --chart-5: oklch(75% 0.18 0);
+  /* Chart Colors - Adjusted for dark mode */
+  --chart-1: oklch(75% 0.12 10);
+  --chart-2: oklch(75% 0.08 145);
+  --chart-3: oklch(75% 0.10 290);
+  --chart-4: oklch(80% 0.10 45);
+  --chart-5: oklch(70% 0.15 350);
 
-  /* Sidebar Specific (aligned with main theme) */
-  --sidebar: oklch(20% 0.01 250);
-  --sidebar-foreground: oklch(95% 0 0);
-  --sidebar-primary: oklch(65% 0.15 255);
-  --sidebar-primary-foreground: oklch(15% 0 0);
-  --sidebar-accent: oklch(40% 0.08 180);
-  --sidebar-accent-foreground: oklch(90% 0.08 180);
-  --sidebar-border: oklch(25% 0.01 250);
-  --sidebar-ring: oklch(50% 0.15 255);
+  /* Sidebar */
+  --sidebar: oklch(20% 0.02 330);
+  --sidebar-foreground: oklch(92% 0.01 75);
+  --sidebar-primary: oklch(75% 0.12 10);
+  --sidebar-primary-foreground: oklch(18% 0.02 10);
+  --sidebar-accent: oklch(35% 0.06 290);
+  --sidebar-accent-foreground: oklch(90% 0.04 290);
+  --sidebar-border: oklch(28% 0.02 330);
+  --sidebar-ring: oklch(75% 0.12 10);
 
-  /* Shadows remain */
-  --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
-  --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
-  --shadow: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-md: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 2px 4px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 4px 6px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 8px 10px -1px oklch(0.00 0 0 / 0.10);
-  --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
+  /* Shadows for dark mode */
+  --shadow-2xs: 0 1px 2px 0 oklch(0 0 0 / 0.1);
+  --shadow-xs: 0 1px 3px 0 oklch(0 0 0 / 0.15);
+  --shadow-sm: 0 2px 4px -1px oklch(0 0 0 / 0.2), 0 1px 2px -1px oklch(0 0 0 / 0.1);
+  --shadow: 0 4px 6px -1px oklch(0 0 0 / 0.25), 0 2px 4px -2px oklch(0 0 0 / 0.1);
+  --shadow-md: 0 6px 10px -2px oklch(0 0 0 / 0.25), 0 3px 6px -3px oklch(0 0 0 / 0.15);
+  --shadow-lg: 0 10px 15px -3px oklch(0 0 0 / 0.25), 0 4px 6px -4px oklch(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px oklch(0 0 0 / 0.3), 0 8px 10px -6px oklch(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px oklch(0 0 0 / 0.5);
 }
 
 @theme inline {
@@ -172,4 +174,67 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Organic blob animation */
+@keyframes blob-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(10px, -15px) scale(1.02);
+  }
+  66% {
+    transform: translate(-8px, 8px) scale(0.98);
+  }
+}
+
+@keyframes blob-float-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-12px, 10px) scale(0.98);
+  }
+  66% {
+    transform: translate(8px, -12px) scale(1.02);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-blob-float {
+  animation: blob-float 12s ease-in-out infinite;
+}
+
+.animate-blob-float-reverse {
+  animation: blob-float-reverse 14s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
 }
